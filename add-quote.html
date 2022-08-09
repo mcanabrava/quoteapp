@@ -1,0 +1,39 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Make a new quote
+        </div>
+        <div class="card-body">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Movie</label>
+                    <input type="text" class="form-control" name="movie"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label>Movie Character</label>
+                    <input type="text" class="form-control" name="movie_character"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label>Quote</label>
+                    <textarea class="form-control"rows="3" name="quote"
+                              required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Rating</label>
+                    <select class="form-control" name="rating">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary">Add new quote</button>
+            </form>
+        </div>
+    </div>
+</div>

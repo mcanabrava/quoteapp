@@ -1,0 +1,73 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            Your quotes!
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">List of your quotes</h5>
+            <p class="card-text">Organize your favorite quotes from movies, series and more</p>
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Movie</th>
+                    <th scope="col">Character</th>
+                    <th scope="col">Quote</th>
+                    <th scope="col">Rating</th>
+
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for quote in quotes %}
+                {% if quote.complete == False %}
+                <tr class="pointer">
+
+                    <td>{{loop.index}}</td>
+                    <td>{{quote.movie}}</td>
+                    <td>{{quote.movie_character}}</td>
+                    <td>{{quote.quote}}</td>
+                    <td>{{quote.rating}}</td>
+                    <td>
+                        <button onclick="window.location.href='complete/{{quote.id}}'"
+                                type="button" class="btn btn-success">Highlight</button>
+                        <button onclick="window.location.href='edit-quote/{{quote.id}}'"
+                                type="button" class="btn btn-info">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+
+                {% else %}
+                <tr class="pointer alert alert-success">
+
+                    <td>{{loop.index}}</td>
+                    <td> {{quote.movie}}</td>
+                    <td>{{quote.movie_character}}</td>
+                    <td>{{quote.quote}}</td>
+                    <td>{{quote.rating}}</td>
+                    <td>
+                        <button onclick="window.location.href='complete/{{quote.id}}'"
+                                type="button" class="btn btn-success">Undo
+                        </button>
+                        <button onclick="window.location.href='edit-quote/{{quote.id}}'"
+                                type="button" class="btn btn-info">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+
+                {% endif %}
+                {% endfor %}
+
+                </tbody>
+            </table>
+
+            <a href="add-quote" class="btn btn-secondary">Add a new quote</a>
+        </div>
+    </div>
+</div>
+
